@@ -11,7 +11,9 @@ const BoxGenerator = (props) => {
         e.preventDefault();
         let boxObj = {boxColor,boxHeight,boxWidth};
         setListOfBoxes([...listOfBoxes,boxObj]);
-        document.getElementById("input") 
+        setBoxColor("")    
+        setBoxHeight("")    
+        setBoxWidth("")    
         
     }
 
@@ -21,13 +23,13 @@ const BoxGenerator = (props) => {
 
             <form name="box-form" onSubmit={createBox}>
                 <label htmlFor="">Color: </label>
-                <input id='input' type="text" onChange={(e)=>setBoxColor(e.target.value)}/>
+                <input id='input' type="text" value= {boxColor} onChange={(e)=>setBoxColor(e.target.value)}/>
 
                 <label htmlFor="">Height in Pixels: </label>
-                <input type="text" onChange={(e)=>setBoxHeight(e.target.value)}/>
+                <input type="text" value={boxHeight} onChange={(e)=>setBoxHeight(e.target.value)}/>
 
                 <label htmlFor="">Width in Pixels: </label>
-                <input type="text" onChange={(e)=>setBoxWidth(e.target.value)}/>
+                <input type="text" value={boxWidth} onChange={(e)=>setBoxWidth(e.target.value)}/>
 
                 <input type="submit" value="Create your box!"/>
             </form>
@@ -37,7 +39,7 @@ const BoxGenerator = (props) => {
             {
                 listOfBoxes.map((box,i)=>{
                     return (
-                        <div key={i} style= {{backgroundColor:box.boxColor, height:box.boxHeight+"px", width:boxWidth+"px", display: "inline-block"}}>
+                        <div key={i} style= {{backgroundColor:box.boxColor, height:box.boxHeight+"px", width:box.boxWidth+"px", display: "inline-block"}}>
                         </div>
                     )
                 })
